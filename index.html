@@ -15,10 +15,10 @@
   .header { background: linear-gradient(135deg, #B39DDB, #90CAF9); color: white; padding: 20px; border-radius: 0 0 25px 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
   .title { font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; }
   
-  /* Weather (Moved inside Page-Info) */
+  /* Weather */
   .weather-scroll { display: flex; gap: 10px; overflow-x: auto; padding: 10px 0; }
-  .w-card { background: #E0F2F1; border: 1px solid #B2DFDB; border-radius: 12px; padding: 8px; min-width: 75px; text-align: center; flex-shrink: 0; color: #333; }
-  .w-day { font-size: 0.75rem; opacity: 0.9; } .w-icon { font-size: 1.5rem; margin: 2px 0; } .w-temp { font-size: 0.85rem; font-weight: bold; } .w-rain { font-size: 0.7rem; background: rgba(0,0,0,0.1); border-radius: 4px; padding: 2px 4px; }
+  .w-card { background: rgba(255,255,255,0.25); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; padding: 8px; min-width: 75px; text-align: center; flex-shrink: 0; color: white; }
+  .w-day { font-size: 0.75rem; opacity: 0.9; } .w-icon { font-size: 1.5rem; margin: 2px 0; } .w-temp { font-size: 0.85rem; font-weight: bold; } .w-rain { font-size: 0.7rem; background: rgba(0,0,0,0.2); border-radius: 4px; padding: 2px 4px; }
 
   /* Container */
   .container { padding: 15px; display: none; animation: fadeIn 0.3s; }
@@ -27,7 +27,7 @@
   
   /* Cards */
   .card { background: var(--card); border-radius: 16px; padding: 18px; margin-bottom: 15px; box-shadow: 0 3px 8px rgba(0,0,0,0.05); border: 1px solid #fff; }
-  .card-head { display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; }
+  .card-head { display: flex; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; }
   .time { background: var(--p); color: #fff; font-size: 0.85rem; padding: 4px 10px; border-radius: 12px; margin-right: 10px; font-weight: bold; flex-shrink: 0; }
   .c-title { font-weight: bold; font-size: 1.1rem; color: #444; }
   
@@ -47,7 +47,7 @@
   .tag { display: inline-block; background: #7E57C2; color: white; font-size: 0.75rem; padding: 3px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 4px; }
   .tag.b { background: #26A69A; } .tag.c { background: #78909C; }
   .step { display: block; margin-bottom: 8px; padding-left: 10px; border-left: 2px solid #ddd; }
-  
+
   /* Buttons */
   .map-btn { display: block; text-align: center; background: var(--btn); color: white; text-decoration: none; padding: 12px; border-radius: 10px; margin-top: 12px; font-weight: bold; font-size: 0.95rem; box-shadow: 0 2px 5px rgba(68,138,255,0.3); }
   .map-btn.sm { display: inline-block; padding: 6px 12px; font-size: 0.85rem; width: auto; margin-top: 8px; margin-right: 8px; }
@@ -55,7 +55,7 @@
   .map-btn.org { background: #FF9800; }
   .check-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px dashed #eee; }
   .check-row input { transform: scale(1.3); margin-right: 12px; accent-color: var(--pd); }
-  
+
   /* JP Modal */
   .jp-list-item { border-bottom: 1px solid #eee; padding: 12px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
   .jp-list-item:active { background: #f5f5f5; }
@@ -63,14 +63,13 @@
   
   #jp-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; flex-direction: column; padding: 20px; text-align: center; }
   #jp-text { color: #fff; font-size: 2rem; font-weight: bold; line-height: 1.5; }
-  #jp-sub { color: #ccc; font-size: 1rem; margin-top: 10px; }
   #jp-close { margin-top: 40px; padding: 10px 30px; background: white; border-radius: 30px; font-weight: bold; color: #333; }
   
   details { margin-top: 10px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff; }
   summary { font-weight: bold; color: var(--pd); cursor: pointer; outline: none; }
 
   /* Nav */
-  .nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; background: white; border-top: 1px solid #eee; display: flex; padding: 5px 0; z-index: 9999; }
+  .nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 85px; background: rgba(255,255,255,0.98); border-top: 1px solid #eee; display: flex; padding: 5px 0; z-index: 9999; }
   .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #999; font-size: 0.75rem; border: none; background: none; }
   .nav-icon { font-size: 1.5rem; margin-bottom: 3px; }
   .nav-item.active { color: var(--pd); } .nav-item.active .nav-icon { transform: scale(1.2); }
@@ -99,23 +98,50 @@
         <div class="c-title" style="color:#3F51B5;">✈️ 航班與住宿資訊</div>
         <div class="info tr">
             <strong>去程：CI0220</strong><br>
-            台北 (TSA) 09:00 ➔ 東京 (HND T3) 13:10<br>
+            台北松山 (TSA) 09:00 ➔ 東京羽田 (HND T3) 13:10<br>
         </div>
         <div class="info wn">
             <strong>回程：CI0221</strong><br>
-            東京 (HND T3) 14:30 ➔ 台北 (TSA) 16:55<br>
+            東京羽田 (HND T3) 14:30 ➔ 台北松山 (TSA) 16:55<br>
             <span class="highlight">⚠️ 建議 12:30 前抵達機場。</span>
         </div>
         <div class="info">
             <strong>🏨 住宿：APA Hotel & Resort Tokyo Bay Shiomi</strong><br>
             地址：東京都江東区潮見2-8-6<br>
             交通：JR京葉線「潮見站」走路1分鐘。<br>
-            <a href="https://www.google.com/maps/search/?api=1&query=APA+Hotel+Resort+Tokyo+Bay+Shiomi" class="map-btn sm" style="background:#5C6BC0; margin-top:5px;" target="_blank">📍 導航去飯店</a>
-            <a href="https://www.china-airlines.com/tw/zh/fly/at-the-airport/check-in/index" class="map-btn sm" style="background:#009688; margin-top:5px;" target="_blank">🔗 華航報到頁面</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=APA+Hotel+Resort+Tokyo+Bay+Shiomi" class="map-btn sm" style="background:#5C6BC0; margin-top:5px;" target="_blank">📍 導航飯店</a>
+            <a href="https://www.china-airlines.com/tw/zh/fly/at-the-airport/check-in/index" class="map-btn sm" style="background:#009688; margin-top:5px;" target="_blank">🔗 華航報到</a>
         </div>
         <div class="jp-box" onclick="showJp('APAホテル 東京ベイ潮見までお願いします。')"><div class="jp-q">給計程車司機看 (點擊放大)：</div><div class="jp-a">APAホテル 東京ベイ潮見までお願いします。</div></div>
     </div>
 
+    <div class="card" style="border: 2px solid #FBC02D;">
+    <div class="c-title" style="color:#F57F17;">🗣️ 手指日文 (點擊放大)</div>
+    
+    <details><summary>🍽️ 餐廳需求 (勿辣/芥末/去冰)</summary>
+      <div class="jp-list-item" onclick="showJp('子供用の椅子はありますか？')"><span class="jp-q">有兒童椅嗎？</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('子供用の食器をください')"><span class="jp-q">請給我兒童餐具</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('離乳食を温めてもらえますか？')"><span class="jp-q">幫我微波副食品</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('氷なしでお願いします')"><span class="jp-q">去冰 (水/飲料)</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('辛くしないでください')"><span class="jp-q">請不要加辣</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('わさび抜きでお願いします')"><span class="jp-q">請不要加芥末</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('お会計をお願いします')"><span class="jp-q">我要結帳</span><span class="jp-hint">放大</span></div>
+    </details>
+
+    <details><summary>🚑 緊急 & 找路</summary>
+      <div class="jp-list-item" onclick="showJp('子供が熱を出しました')"><span class="jp-q">小孩發燒了</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('近くに薬局はありますか？')"><span class="jp-q">附近有藥局嗎？</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('救急車を呼んでください')"><span class="jp-q">請幫我叫救護車</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('エレベーターはどこですか？')"><span class="jp-q">電梯在哪裡？</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('トイレはどこですか？')"><span class="jp-q">廁所在哪裡？</span><span class="jp-hint">放大</span></div>
+    </details>
+
+    <details><summary>🛍️ 購物 & 交通</summary>
+      <div class="jp-list-item" onclick="showJp('免税（Tax Free）できますか？')"><span class="jp-q">可以免稅嗎？</span><span class="jp-hint">放大</span></div>
+      <div class="jp-list-item" onclick="showJp('袋をください')"><span class="jp-q">我要買袋子</span><span class="jp-hint">放大</span></div>
+    </details>
+  </div>
+  
     <div class="card" style="border:2px solid #EF5350;">
         <div class="c-title" style="color:#C62828;">🚑 緊急應變</div>
         <div class="info wn">
@@ -142,36 +168,9 @@
     <a href="https://art-play.or.jp/ttm/" class="map-btn sm" style="background:#8D6E63" target="_blank">🔗 美術館官網</a>
   </div>
 
-  <div class="card" style="border: 2px solid #FBC02D;">
-    <div class="c-title" style="color:#F57F17;">🗣️ 手指日文 (點擊放大)</div>
-    
-    <details><summary>🍽️ 餐廳需求 (勿辣/芥末/去冰)</summary>
-      <div class="jp-list-item" onclick="showJp('子供用の椅子はありますか？')"><span class="jp-q">有兒童椅嗎？</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('子供用の食器をください')"><span class="jp-q">請給我兒童餐具</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('離乳食を温めてもらえますか？')"><span class="jp-q">幫我微波副食品</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('氷なしでお願いします')"><span class="jp-q">去冰 (水/飲料)</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('辛くしないでください')"><span class="jp-q">請不要加辣</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('わさび抜きでお願いします')"><span class="jp-q">請不要加芥末</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('お会計をお願いします')"><span class="jp-q">我要結帳</span><span class="jp-hint">放大</span></div>
-    </details>
-
-    <details><summary>🚑 緊急 & 找路</summary>
-      <div class="jp-list-item" onclick="showJp('子供が熱を出しました')"><span class="jp-q">小孩發燒了</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('近くに薬局はありますか？')"><span class="jp-q">附近有藥局嗎？</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('救急車を呼んでください')"><span class="jp-q">請幫我叫救護車</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('エレベーターはどこですか？')"><span class="jp-q">電梯在哪裡？</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('トイレはどこですか？')"><span class="jp-q">廁所在哪裡？</span><span class="jp-hint">放大</span></div>
-    </details>
-
-    <details><summary>🛍️ 購物 & 交通</summary>
-      <div class="jp-list-item" onclick="showJp('免税（Tax Free）できますか？')"><span class="jp-q">可以免稅嗎？</span><span class="jp-hint">放大</span></div>
-      <div class="jp-list-item" onclick="showJp('袋をください')"><span class="jp-q">我要買袋子</span><span class="jp-hint">放大</span></div>
-    </details>
-  </div>
-
   <div class="card">
     <div class="c-title" style="color:#009688;">🛒 Day 1 日本必買清單</div>
-    <div class="info st">Day 4 會用到，第一天記得先買：</div>
+    <div class="info st">為了 Day 4 行程，第一天請在商場買齊：</div>
     <div class="check-row"><label><input type="checkbox"> <strong>玩沙工具 & 泡泡機</strong> (3COINS)</label></div>
     <div class="check-row"><label><input type="checkbox"> <strong>野餐墊</strong> (DAISO/超市)</label></div>
     <div class="check-row"><label><input type="checkbox"> <strong>大瓶水 & 水果</strong> (飯店用)</label></div>
@@ -180,7 +179,7 @@
   <div class="card">
     <div class="c-title" style="color:#D81B60;">🧳 出發前行李檢查</div>
     <div class="check-row"><label><input type="checkbox"> 護照 (效期>6個月)</label></div>
-    <div class="check-row"><label><input type="checkbox"> VJW 入境 QR Code (每人都要)</label></div>
+    <div class="check-row"><label><input type="checkbox"> VJW 入境 QR Code</label></div>
     <div class="check-row"><label><input type="checkbox"> 旅遊保險單 & 網卡</label></div>
     <div class="check-row"><label><input type="checkbox"> 日幣現金 (5-8萬) & 信用卡</label></div>
   </div>
@@ -190,9 +189,8 @@
     <div class="check-row"><label><input type="checkbox"> 推車 & <strong>雨罩</strong> (必備!)</label></div>
     <div class="check-row"><label><input type="checkbox"> 背巾 (電車人多用)</label></div>
     <div class="check-row"><label><input type="checkbox"> 尿布 (隨身5片+行李1包)</label></div>
-    <div class="check-row"><label><input type="checkbox"> 常備藥 & 體溫計 & 吸鼻器</label></div>
-    <div class="check-row"><label><input type="checkbox"> 安撫玩具/奶嘴/零食</label></label></div>
-    <div class="check-row"><label><input type="checkbox"> 盥洗用品(寶寶沐浴乳、保濕乳液、小牙刷)</label></div>
+    <div class="check-row"><label><input type="checkbox"> 常備藥 & 體溫計 & 吸鼻器</label></label></div>
+    <div class="check-row"><label><input type="checkbox"> 盥洗用品(寶寶沐浴乳、小牙刷)</label></div>
   </div>
 </div>
   
@@ -208,14 +206,15 @@
   <div class="card">
     <div class="card-head"><span class="time">13:10</span><span class="c-title">抵達與移動 (詳細導航)</span></div>
     <div class="info tr">
-      <span class="step">1. 羽田 T3 ➔ 搭 <strong>東京單軌電車</strong>。 (15分 / 335円)</span>
-      <span class="step">2. 「天王洲島」<span class="highlight">出站走南口空橋</span> 轉 <strong>臨海線</strong> (找電梯)。 (7分 / 270円)</span>
-      <span class="step">3. 搭往「新木場」。</span>
+      <span class="step">1. 羽田機場 T3 ➔ 搭 <strong>東京單軌電車</strong>。 (15分 / 335円)</span>
+      <span class="step">2. 「天王洲島站」下車。<span class="highlight">出站走南口空橋</span> (約7-10分鐘，有電梯) 轉乘 <strong>臨海線</strong>。</span>
+      <span class="step">3. 搭往「新木場」方向。 (8分 / 270円)</span>
       <span class="step">4. 「新木場站」下車，搭電梯上樓，轉乘 <strong>JR京葉線</strong> (1站) ➔ 「潮見站」。(2分 / 146円)</span>
       <span class="step" style="border-left: none;">💡 <strong>總費用約 751円，總耗時 60-70分鐘。</strong></span>
     </div>
     <div class="info taxi">
-      🚖 <strong>計程車建議：</strong> 若行李太多，從機場直達潮見約 40分鐘 / 9,000-10,000日圓。
+      🚖 <strong>計程車建議：</strong><br>
+      若行李太多，從機場直達潮見約 40分鐘 / 9,000-10,000日圓。
     </div>
     <div class="jp-box" onclick="showJp('すみません、エレベーターはどこですか？')"><div class="jp-q">迷路問站務員 (點擊放大)：</div><div class="jp-a">すみません、エレベーターはどこですか？</div></div>
   </div>
@@ -233,15 +232,11 @@
       <span class="highlight">出口：2b 出口</span> (有電梯直通商場)。
     </div>
     <div class="info shop">
-      <strong>🛒 必買清單：</strong><br>
-      1. <strong>3COINS (1F)：</strong> <span class="highlight">玩沙工具、泡泡機</span>。<br>
-      2. <strong>Akachan (3F)：</strong> 尿布(L褲型)、防蚊貼。<br>
-      3. <strong>UNIQLO (1F)：</strong> 薄外套。<br>
-      4. <strong>超市 (1F)：</strong> 大水、水果。
+      <strong>🛒 必買清單：</strong> 3COINS (玩沙組)、Akachan (尿布)、UNIQLO (薄外套)。
     </div>
     <div class="info fd">
       <strong>🍽️ 晚餐三備案 (商場內)：</strong><br>
-      <span class="tag">A 享受</span> <strong>築地玉壽司 (4F)</strong>：握壽司，有熟食。<br>
+      <span class="tag">A 享受</span> <strong>築地玉壽司 (4F)</strong>：道地握壽司，有熟食。<br>
       <a href="https://www.google.com/maps/search/?api=1&query=Tsukiji+Tama+Sushi+Lalaport+Toyosu" class="map-btn sm" target="_blank">📍導航玉壽司</a><br><br>
       
       <span class="tag b">B 安全</span> <strong>100 Spoons (3F)</strong>：親子餐廳，有免費寶寶粥。<br>
@@ -285,12 +280,12 @@
     <div class="card-head"><span class="time">20:00</span><span class="c-title">回飯店休息</span></div>
     <div class="info tr">
       無論去哪，回程都建議搭計程車。<br>
-      💰 潮見往返錦糸町/豐洲 約 2000-3000円。
+      💰 潮見往返錦糸町/豐洲 約 2000-2500円。
     </div>
   </div>
 </div>
 
-  <div id="page-d2" class="container">
+<div id="page-d2" class="container">
   <div class="card daily-bag">
     <div class="c-title">🎒 今日隨身包 (迪士尼)</div>
     <div class="check-row"><label><input type="checkbox"> <strong>門票 QR Code & App</strong></label></div>
@@ -305,7 +300,7 @@
       <strong>潮見 ➔ 舞濱</strong><br>
       🚇 JR京葉線 (往蘇我/海濱幕張)<br>
       ⏰ 乘車 9分鐘 / 💰 IC 167円<br>
-      <strong>走路：</strong> <span class="highlight">南口</span> 出站，跟著人群左轉，沿坡道走就到檢查站。<br>
+      <strong>走路：</strong> <span class="highlight">南口</span> 出站，左轉沿坡道走。<br>
       <strong>推車：</strong> 入園後右手邊可租借 (1000日圓)。
     </div>
     <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Disneyland+Entrance" class="map-btn" target="_blank">📍 導航迪士尼入口</a>
@@ -318,13 +313,13 @@
       入園後找工作人員說 "First Visit Sticker"，拿貼紙給暘暘！
     </div>
     <div class="info">
-      ✅ <strong>小小世界</strong>：坐船吹冷氣，最穩。<br>
+      ✅ <strong>小小世界</strong>：最穩。<br>
       ✅ <strong>城堡旋轉木馬</strong>：爸媽扶著坐。<br>
       ✅ <strong>西部沿河鐵路</strong>：坐蒸氣火車看恐龍。<br>
       ✅ <strong>卡通城 (Toontown)</strong>：必去！米妮公館、唐老鴨汽船。
     </div>
     <div class="info wn">
-      ❌ <strong>絕對避雷：</strong> 小熊維尼(太暗/亂轉會嚇哭)、幽靈公館(鬼屋)、白雪公主(恐怖)、米奇魔法交響樂(聲音大)。
+      ❌ <strong>絕對避雷：</strong> 小熊維尼(太暗/亂轉會嚇哭)、幽靈公館(鬼屋)、米奇魔法交響樂(聲音大)。
     </div>
     <div class="info rn">
       ☔ <strong>雨天/室內備案：</strong><br>
@@ -354,7 +349,7 @@
       <a href="https://www.google.com/maps/search/?api=1&query=Pan+Galactic+Pizza+Port" class="map-btn sm" target="_blank">📍導航披薩</a>
     </div>
     <div class="info">
-      <strong>💤 午睡策略：</strong> 推到「西部樂園」河邊 (馬克吐溫號附近)，比較安靜，爸媽可以買隻火雞腿休息。
+      <strong>💤 午睡策略：</strong> 推到「西部樂園」河邊 (馬克吐溫號附近)，比較安靜。
     </div>
   </div>
 
@@ -381,7 +376,7 @@
     </div>
     <div class="info fd">
       <span class="tag c">C 快速</span> <strong>明日世界露台</strong><br>
-      吃米奇造型漢堡，座位非常多，如果小孩想睡覺選這最快。
+      吃米奇漢堡，座位多，如果小孩想睡覺選這最快。
       <a href="https://www.google.com/maps/search/?api=1&query=Tomorrowland+Terrace" class="map-btn sm" target="_blank">📍導航漢堡</a>
     </div>
   </div>
@@ -389,8 +384,8 @@
   <div class="card">
     <div class="card-head"><span class="time" style="background:#5C6BC0;">19:15</span><span class="c-title">🌙 夜間遊行：夢之光</span></div>
     <div class="info tr">
-      <strong>📍 最佳觀賞點：西部樂園 (Westernland)</strong><br>
-      <span class="highlight">推薦原因：</span> 遊行會先經過這裡，看完可以立刻轉身往出口方向移動，避開最後散場的人潮地獄。
+      <strong>📍 最佳觀賞點：西部樂園</strong><br>
+      <span class="highlight">推薦原因：</span> 遊行會先經過這裡，看完可以立刻轉身往出口移動避開散場人潮地獄。
     </div>
     <div class="info tr">
       <strong>回程：舞濱 ➔ 潮見</strong><br>
@@ -400,8 +395,8 @@
     <a href="https://www.google.com/maps/search/?api=1&query=Westernland+Tokyo+Disneyland" class="map-btn sm" target="_blank">📍 導航西部樂園</a>
   </div>
 </div>
-
-<div id="page-d3" class="container">
+  
+  <div id="page-d3" class="container">
   <div class="card daily-bag">
     <div class="c-title">🎒 今日隨身包</div>
     <div class="check-row"><label><input type="checkbox"> <strong>推車雨罩</strong> (看氣象)</label></div>
@@ -410,16 +405,16 @@
   </div>
 
   <div class="card">
-    <div class="card-head"><span class="time">09:30</span><span class="c-title">葛西臨海公園 + 水族館</span></div>
+    <div class="card-head"><span class="time">09:30</span><span class="c-title">葛西臨海公園 + 水族館 (必去)</span></div>
     <div class="info tr">
       <strong>潮見 ➔ 葛西臨海公園</strong><br>
       🚇 JR京葉線 (往蘇我/海濱幕張)<br>
       ⏰ 乘車 6分鐘 / 💰 IC 157円<br>
     </div>
     <div class="info pk">
-      1. <strong>小火車 (Park Train)：</strong> 350日圓。車站在大觀覽車下，繞公園一圈看海景。<br>
-      2. <strong>水族館 (必去)：</strong> 門票便宜 (700円)，有戶外企鵝區。<br>
-      3. <strong>賞櫻：</strong> 摩天輪下有大草皮，適合拍照奔跑。
+      1. <strong>水族館 (必去)：</strong> 門票便宜 (700円)，有戶外企鵝區。<br>
+      2. <strong>小火車 (Park Train)：</strong> 350日圓。車站在大觀覽車下，繞公園一圈看海景。<br>
+      3. <strong>賞櫻：</strong> 摩天輪下有大草皮。
     </div>
     <div class="info rn">
       ☔ <strong>雨天備案：</strong><br>
@@ -461,14 +456,13 @@
       <strong>Sunny Mall 西葛西 (3F)</strong><br>
       1. <strong>Birthday：</strong> 日本媽媽最愛的平價童裝神店 (futafuta系列)。<br>
       2. <strong>西松屋：</strong> 便宜的寶寶粥、用品。<br>
-      3. <strong>DAISO：</strong> 超大間大創。<br>
-      4. <strong>Shimamura (2F)：</strong> 媽媽也可以買衣服。
+      3. <strong>DAISO：</strong> 超大間大創。
     </div>
     <a href="https://www.google.com/maps/search/?api=1&query=Sunny+Mall+Nishikasai" class="map-btn" target="_blank">📍 導航 Sunny Mall</a>
   </div>
 
   <div class="card">
-    <div class="card-head"><span class="time">18:00</span><span class="c-title">晚餐三選一 (西葛西)</span></div>
+    <div class="card-head"><span class="time">18:00</span><span class="c-title">晚餐三備案 (西葛西)</span></div>
     <div class="info fd">
       <span class="tag">A 享受</span> <strong>壽司郎 (西葛西店)</strong><br>
       走路 3 分鐘。日本的鮮度完勝台灣！平板點餐有中文，小孩有薯條、烏龍麵、蛋糕。<br>
@@ -476,96 +470,7 @@
     </div>
     <div class="info fd">
       <span class="tag b">B 安全</span> <strong>Bikkuri Donkey</strong><br>
-      Sunny Mall 2F。日式漢堡排，木盤盛裝，非常適合幼兒。<br>
-      <a href="https://www.google.com/maps/search/?api=1&query=Bikkuri+Donkey+Sunny+Mall+Nishikasai" class="map-btn sm" target="_blank">📍導航漢堡排</a>
-    </div>
-    <div class="info fd">
-      <span class="tag c">C 方便</span> <strong>薩莉亞 (Sunny Mall)</strong><br>
-      平價義大利麵，小孩弄髒也不心疼。<br>
-      <a href="https://www.google.com/maps/search/?api=1&query=Saizeriya+Sunny+Mall+Nishikasai" class="map-btn sm" target="_blank">📍導航薩莉亞</a>
-    </div>
-    <div class="info tr">
-      <strong>回程：</strong> 搭計程車回飯店。<br>
-      💰 約 1500-1800 日圓 (15分鐘) / 最省力。
-    </div>
-  </div>
-</div>
-  
-  <div id="page-d3" class="container">
-  <div class="card daily-bag">
-    <div class="c-title">🎒 今日隨身包</div>
-    <div class="check-row"><label><input type="checkbox"> <strong>推車雨罩</strong> (看氣象)</label></div>
-    <div class="check-row"><label><input type="checkbox"> IC卡 (搭公車用)</label></div>
-    <div class="check-row"><label><input type="checkbox"> <strong>護照</strong> (預辦登機用)</label></div>
-  </div>
-
-  <div class="card">
-    <div class="card-head"><span class="time">09:30</span><span class="c-title">葛西臨海公園 (水族館必去)</span></div>
-    <div class="info tr">
-      <strong>潮見 ➔ 葛西臨海公園</strong><br>
-      🚇 JR京葉線 (往蘇我/海濱幕張)<br>
-      ⏰ 乘車 6分鐘 / 💰 IC 157円<br>
-    </div>
-    <div class="info pk">
-      1. <strong>小火車 (Park Train)：</strong> 350日圓。車站在大觀覽車下。<br>
-      2. <strong>水族館 (必去)：</strong> 門票便宜 (700円)，有戶外企鵝區。<br>
-      3. <strong>賞櫻：</strong> 摩天輪下有大草皮，適合拍照奔跑。
-    </div>
-    <div class="info rn">
-      ☔ <strong>雨天備案：</strong> 直奔 <strong>葛西臨海水族園</strong>，看大鮪魚和企鵝，全程室內。<br>
-      <a href="https://www.google.com/maps/search/?api=1&query=Kasai+Rinkai+Aquarium" class="map-btn rain" target="_blank">📍 導航水族館</a>
-    </div>
-    <a href="https://www.google.com/maps/search/?api=1&query=Kasai+Rinkai+Park" class="map-btn" target="_blank">📍 導航公園</a>
-  </div>
-
-  <div class="card">
-    <div class="card-head"><span class="time">13:00</span><span class="c-title">公車去西葛西 (體驗)</span></div>
-    <div class="info tr">
-      <strong>搭公車攻略：</strong><br>
-      1. 在公園前圓環找 <strong>[西葛26]</strong> 公車。<br>
-      2. <span class="highlight">從中門上車</span>，告訴司機有推車 (ベビーカー)。<br>
-      3. 下車點：「西葛西站前」。<br>
-      💰 票價：210円 (刷IC卡) / 車程約 15分。
-    </div>
-    <div class="jp-box" onclick="showJp('これは西葛西駅に行きますか？')">
-      <div class="jp-q">問司機 (點擊放大)：</div>
-      <div class="jp-a">これは西葛西駅に行きますか？</div>
-    </div>
-    <a href="https://www.google.com/maps/search/?api=1&query=Kasai+Rinkai+Park+Bus+Stop" class="map-btn sm" target="_blank">📍 導航公車站</a>
-  </div>
-
-  <div class="card" style="border:2px solid #FF9800; background:#FFF8E1;">
-    <div class="card-head"><span class="time" style="background:#E65100">重要</span><span class="c-title" style="color:#E65100">🔔 開放預辦登機</span></div>
-    <div class="info" style="background:white">
-      回程航班 <strong>CI0221</strong> 開放線上報到！<br>
-      建議先選位。
-    </div>
-    <div class="check-row"><label><input type="checkbox"> 已完成線上報到</label></div>
-    <a href="https://www.china-airlines.com/tw/zh/fly/at-the-airport/check-in/index" class="map-btn org" target="_blank">🔗 前往華航報到頁面</a>
-  </div>
-
-  <div class="card">
-    <div class="card-head"><span class="time">15:00</span><span class="c-title">Birthday 購物 (Sunny Mall)</span></div>
-    <div class="info shop">
-      <strong>Sunny Mall 西葛西 (3F)</strong><br>
-      1. <strong>Birthday：</strong> 平價童裝神店 (futafuta系列)。<br>
-      2. <strong>西松屋：</strong> 便宜的寶寶粥、用品。<br>
-      3. <strong>DAISO：</strong> 超大間大創。<br>
-      4. <strong>Shimamura (2F)：</strong> 媽媽也可以買衣服。
-    </div>
-    <a href="https://www.google.com/maps/search/?api=1&query=Sunny+Mall+Nishikasai" class="map-btn" target="_blank">📍 導航 Sunny Mall</a>
-  </div>
-
-  <div class="card">
-    <div class="card-head"><span class="time">18:00</span><span class="c-title">晚餐三選一 (西葛西)</span></div>
-    <div class="info fd">
-      <span class="tag">A 享受</span> <strong>壽司郎 (西葛西店)</strong><br>
-      走路 3 分鐘。日本的鮮度完勝台灣！平板點餐有中文，小孩有薯條、烏龍麵、蛋糕。<br>
-      <a href="https://www.google.com/maps/search/?api=1&query=Sushiro+Nishikasai" class="map-btn sm" target="_blank">📍導航壽司郎</a>
-    </div>
-    <div class="info fd">
-      <span class="tag b">B 安全</span> <strong>Bikkuri Donkey</strong><br>
-      Sunny Mall 2F。日式漢堡排，木盤盛裝，非常適合幼兒。<br>
+      Sunny Mall 2F。日式漢堡排，適合幼兒。<br>
       <a href="https://www.google.com/maps/search/?api=1&query=Bikkuri+Donkey+Sunny+Mall+Nishikasai" class="map-btn sm" target="_blank">📍導航漢堡排</a>
     </div>
     <div class="info fd">
@@ -580,10 +485,10 @@
   </div>
 </div>
 
-  <div id="page-d4" class="container">
+<div id="page-d4" class="container">
   <div class="card daily-bag">
-    <div class="c-title">🎒 今日必帶 (玩沙日)</div>
-    <div class="check-row"><label><input type="checkbox"> <strong>玩沙工具組 & 泡泡機</strong></label></div>
+    <div class="c-title">🎒 今日必帶 (賞櫻+木育)</div>
+    <div class="check-row"><label><input type="checkbox"> <strong>玩沙工具組 & 泡泡機</strong> (Day1買的)</label></div>
     <div class="check-row"><label><input type="checkbox"> <strong>野餐墊</strong> (御苑用)</label></div>
     <div class="check-row"><label><input type="checkbox"> 預約好的電子門票</label></div>
     <div class="check-row"><label><input type="checkbox"> 替換衣物 & 塑膠袋 (玩沙會髒)</label></div>
@@ -592,10 +497,8 @@
   <div class="card">
     <div class="card-head"><span class="time">09:30</span><span class="c-title">🌸 新宿御苑 (賞櫻)</span></div>
     <div class="info tr">
-      <strong>1. 潮見 ➔ 東京</strong><br>
-      🚇 JR京葉線 / 7分 / 167円<br>
-      <strong>2. 東京 ➔ 新宿御苑前</strong><br>
-      🚇 丸之內線 (往新宿/荻窪)<br>
+      <strong>1. 潮見 ➔ 東京</strong> (JR京葉線 / 7分 / 167円)<br>
+      <strong>2. 東京 ➔ 新宿御苑前</strong> (丸之內線)<br>
       ⏰ 乘車 15分 / 💰 IC 178円<br>
       <strong>出口：</strong> 找 <span class="highlight">1號出口 (有電梯)</span>，往「新宿門」走。
     </div>
@@ -608,7 +511,7 @@
   </div>
 
   <div class="card">
-    <div class="card-head"><span class="time">12:00</span><span class="c-title">午餐選擇 (御苑周邊)</span></div>
+    <div class="card-head"><span class="time">12:00</span><span class="c-title">午餐三備案 (御苑周邊)</span></div>
     <div class="info fd">
       <span class="tag">A 推薦</span> <strong>伊勢丹/高島屋美食街</strong><br>
       買精緻便當帶去御苑野餐是最佳選擇！<br>
@@ -619,6 +522,10 @@
       好吃的漢堡排，有鋁箔紙包著，親子友善。<br>
       <a href="https://www.google.com/maps/search/?api=1&query=Haneda+Airport+Garden8" class="map-btn sm" target="_blank">📍導航 Tsubame</a>
     </div>
+    <div class="info fd">
+      <span class="tag c">C 快速</span> <strong>松屋/吉野家</strong><br>
+      新宿御苑附近有很多。速度快、安全牌。
+    </div>
   </div>
 
   <div class="card">
@@ -626,36 +533,30 @@
     <div class="info taxi">
       🚖 <strong>交通建議：</strong> 從御苑搭<strong>計程車</strong>前往最方便。<br>
       💰 約 1000-1200 日圓 / 10分鐘。<br>
-      (若搭地鐵要走回車站再轉車，帶小孩不划算)
+      (省錢版：搭丸之內線到「四谷三丁目」站，走7分鐘)
     </div>
     <div class="info pk">
-      <strong>廢校改建的溫馨樂園！</strong><br>
-      全館都是木頭玩具。必去 <strong>「木育廣場 (0-2歲專屬)」</strong>，地板也是木頭的，非常安全。<br>
-      (記得要先上網預約門票)
+      <strong>特色：</strong> 必去 <strong>「木育廣場 (0-2歲專屬)」</strong>，地板也是木頭的，非常安全。<br>
+      (需事先上網預約門票)
     </div>
-    <div class="info rn">☔ 雨天備案：這裡就是室內，下雨天來這裡最完美！</div>
+    <div class="info rn">☔ 雨天備案：這裡就是室內，完美！</div>
     <a href="https://www.google.com/maps/search/?api=1&query=Sunny+Mall+Nishikasai7" class="map-btn" target="_blank">📍 導航玩具美術館</a>
   </div>
 
   <div class="card">
     <div class="card-head"><span class="time">16:30</span><span class="c-title">備案：Aqua City 補貨</span></div>
     <div class="info tr">
-      <strong>1. 四谷三丁目 ➔ 銀座</strong><br>
-      🚇 丸之內線 / 8分 / 178円<br>
-      <strong>2. 銀座 ➔ 新橋</strong><br>
-      🚇 銀座線 / 2分 / 178円<br>
-      <strong>3. 新橋 ➔ 台場</strong><br>
-      🚇 海鷗號 (百合海鷗號) / 15分 / 325円<br>
-      <span class="highlight">💡 這段路風景很美，可以坐第一節車廂看風景。</span>
+      <strong>移動方式：</strong> 從四谷三丁目搭地鐵到「新橋站」，轉海鷗號 ➔ 台場站。<br>
+      <span class="highlight">💡 海鷗號坐第一節車廂看風景。</span>
     </div>
-    <div class="info st">
+    <div class="info shop">
       Babies’R’Us (1F) 買玩具 / Disney Store (3F)。
     </div>
     <a href="https://www.google.com/maps/search/?api=1&query=Aqua+City+Odaiba" class="map-btn" target="_blank">📍 導航 Aqua City</a>
   </div>
 
   <div class="card">
-    <div class="card-head"><span class="time">18:00</span><span class="c-title">晚餐三選一 (台場)</span></div>
+    <div class="card-head"><span class="time">18:00</span><span class="c-title">晚餐三備案 (台場)</span></div>
     <div class="info fd">
       <span class="tag">A 大餐</span> <strong>平城苑 燒肉 (Aqua City 1F)</strong><br>看夜景吃 A5 黑毛和牛。有剪刀。<br>
       <a href="https://www.google.com/maps/search/?api=1&query=Heijoen+Aqua+City+Odaiba" class="map-btn sm" target="_blank">📍導航平城苑</a>
@@ -669,10 +570,8 @@
       <a href="https://www.google.com/maps/search/?api=1&query=Pomme+no+Ki+Aqua+City" class="map-btn sm" target="_blank">📍導航蛋包飯</a>
     </div>
     <div class="info tr">
-      <strong>回程：</strong><br>
-      1. 走回「東京電訊站」。<br>
-      2. 搭 <strong>臨海線</strong> (往新木場) / 7分 / 270円。<br>
-      3. <strong>新木場 ➔ 潮見</strong> (JR) / 3分 / 146円。
+      <strong>回程：</strong> 走回東京電訊站 ➔ 臨海線 ➔ 新木場 ➔ JR潮見。<br>
+      💰 總車費約 580円 / 總時長約 35分。
     </div>
   </div>
 </div>
@@ -704,7 +603,6 @@
     <div class="info tr">
       <strong>推薦：利木津巴士</strong><br>
       JR搭一站到「新木場站」轉搭巴士。<br>
-      優點：不用扛行李轉車，小孩有位子坐。<br>
       <span class="highlight">⚠️ 備案：若時間對不上，搭電車原路返回。</span>
     </div>
     <div class="jp-box" onclick="showJp('羽田空港行きのバス乗り場はどこですか？')"><div class="jp-q">問人 (點擊放大)：</div><div class="jp-a">羽田空港行きのバス乗り場はどこですか？</div></div>
@@ -781,10 +679,11 @@ async function getWeather() {
   } catch(e) { box.innerHTML = "天氣載入失敗"; }
 }
 window.onload = function() {
-  sw('info', document.querySelector('.nav-item')); // 設定資訊頁為預設
+  sw('info', document.querySelector('.nav-item')); 
   getWeather();
 }
 </script>
 
 </body>
 </html>
+

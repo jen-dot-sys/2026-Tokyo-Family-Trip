@@ -702,10 +702,84 @@ function closeJp() {
   document.getElementById('jp-modal').style.display = 'none';
 }
 
+function saveExpense() {
+    const amount = document.getElementById('expense-amount').value;
+    const description = document.getElementById('expense-description').value;
+    const daySelect = document.getElementById('expense-day');
+    const dayText = daySelect.options[daySelect.selectedIndex].text;
+    
+    if (!amount || !description || parseFloat(amount) <= 0) {
+        alert("請輸入有效的金額和項目內容！");
+        return;
+    }
+    
+    const sortYear = 2026; 
+    const [month, date] = daySelect.value.split('/');
+    const sortDate = `${sortYear}-${month.padStart(2, '0')}-${date.padStart(2, '0')}`;
+
+    const newExpense = {
+        sortDate: sortDate,
+        displayDate: dayText,
+        description: description,
+        amount: parseFloat(amount)
+    };
+
+    const expenses = loadExpenses();
+    expenses.push(newExpense);
+    localStorage.setItem('tokyoTripExpenses', JSON.stringify(expenses));
+
+    document.getElementById('expense-amount').value = '';
+    document.getElementById('expense-description').value = '';
+    renderSummary();
+}
+
+function loadExpenses() {
+    const expenses = JSON.parse(localStorage.getItem('tokyoTripExpenses')) || [];
+    return expenses.sort((a, b) => new Date(a.sortDate) - new Date(b.sortDate));
+}
+
+function renderSummary() {
+    const expenses = loadExpenses();
+    const tableBody = document.getElementById('summary-table');
+    const totalDisplay = document.getElementById('total-amount');
+    
+    let total = 0;
+    let html = `
+        <tr><th>日期</th><th>項目內容</th><th>金額 (¥)</th></tr>
+    `;
+
+    if (expenses.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #777;">目前無紀錄</td></tr>`;
+        totalDisplay.innerText = "總支出: ¥ 0";
+        return;
+    }
+
+    expenses.forEach(item => {
+        total += item.amount;
+        html += `
+            <tr>
+                <td>${item.displayDate}</td>
+                <td>${item.description}</td>
+                <td>${item.amount.toLocaleString('en-US')}</td>
+            </tr>
+        `;
+    });
+
+    tableBody.innerHTML = html;
+    totalDisplay.innerText = `總支出: ¥ ${total.toLocaleString('en-US')}`;
+}
+
+function clearData() {
+    if (confirm("⚠️ 確認清除所有記帳資料？此動作無法復原。")) {
+        localStorage.removeItem('tokyoTripExpenses');
+        renderSummary();
+    }
+}
+
 async function getWeather() {
   const box = document.getElementById('weather-container');
   try {
-    const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=35.6895&longitude=139.6917&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo");
+    const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=35.6895&longitude=139.6917&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokYO");
     const data = await res.json();
     let html = "";
     for(let i=0; i<5; i++) {
@@ -716,14 +790,7 @@ async function getWeather() {
       const max = Math.round(data.daily.temperature_2m_max[i]);
       const rain = data.daily.precipitation_probability_max[i];
       let icon = code === 0 ? "☀️" : (code <= 3 ? "☁️" : (code <= 60 ? "🌧️" : "⛈️"));
-      
-      // 修正：直接在生成的 div 裡加入深色字體
-      html += `<div class="w-card" style="color: #333;">
-                <div class="w-day">${day}</div>
-                <div class="w-icon">${icon}</div>
-                <div class="w-temp">${min}-${max}°</div>
-                <div class="w-rain" style="color:#444; background: rgba(0,0,0,0.1);">☔${rain}%</div>
-              </div>`;
+      html += `<div class="w-card"><div class="w-day">${day}</div><div class="w-icon">${icon}</div><div class="w-temp">${min}-${max}°</div><div class="w-rain">☔${rain}%</div></div>`;
     }
     box.innerHTML = html;
   } catch(e) { box.innerHTML = "天氣載入失敗"; }
@@ -731,6 +798,7 @@ async function getWeather() {
 window.onload = function() {
   sw('info', document.querySelector('.nav-item')); 
   getWeather();
+  renderSummary(); // 初始載入記帳數據
 }
 </script>
 

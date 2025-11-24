@@ -677,7 +677,14 @@ async function getWeather() {
       const max = Math.round(data.daily.temperature_2m_max[i]);
       const rain = data.daily.precipitation_probability_max[i];
       let icon = code === 0 ? "☀️" : (code <= 3 ? "☁️" : (code <= 60 ? "🌧️" : "⛈️"));
-      html += `<div class="w-card"><div class="w-day">${day}</div><div class="w-icon">${icon}</div><div class="w-temp">${min}-${max}°</div><div class="w-rain">☔${rain}%</div></div>`;
+      
+      // 修正：直接在生成的 div 裡加入深色字體
+      html += `<div class="w-card" style="color: #333;">
+                <div class="w-day">${day}</div>
+                <div class="w-icon">${icon}</div>
+                <div class="w-temp">${min}-${max}°</div>
+                <div class="w-rain" style="color:#444; background: rgba(0,0,0,0.1);">☔${rain}%</div>
+              </div>`;
     }
     box.innerHTML = html;
   } catch(e) { box.innerHTML = "天氣載入失敗"; }
@@ -690,4 +697,3 @@ window.onload = function() {
 
 </body>
 </html>
-

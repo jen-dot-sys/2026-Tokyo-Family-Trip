@@ -707,12 +707,12 @@ function saveExpense() {
     const description = document.getElementById('expense-description').value;
     const daySelect = document.getElementById('expense-day');
     const dayText = daySelect.options[daySelect.selectedIndex].text;
-    
+
     if (!amount || !description || parseFloat(amount) <= 0) {
         alert("請輸入有效的金額和項目內容！");
         return;
     }
-    
+
     const sortYear = 2026; 
     const [month, date] = daySelect.value.split('/');
     const sortDate = `${sortYear}-${month.padStart(2, '0')}-${date.padStart(2, '0')}`;
@@ -742,7 +742,7 @@ function renderSummary() {
     const expenses = loadExpenses();
     const tableBody = document.getElementById('summary-table');
     const totalDisplay = document.getElementById('total-amount');
-    
+
     let total = 0;
     let html = `
         <tr><th>日期</th><th>項目內容</th><th>金額 (¥)</th></tr>

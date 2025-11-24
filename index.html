@@ -68,6 +68,11 @@
   details { margin-top: 10px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff; }
   summary { font-weight: bold; color: var(--pd); cursor: pointer; outline: none; }
 
+/* Accounting */
+  #page-info input[type=number], #page-info input[type=text], #page-info select { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+  #page-info .summary-table th, #page-info .summary-table td { padding: 8px; border-bottom: 1px solid #eee; text-align: left; font-size: 0.9rem; }
+  #page-info .summary-table th { background: #eee; }
+
   /* Nav */
   .nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 85px; background: rgba(255,255,255,0.98); border-top: 1px solid #eee; display: flex; padding: 5px 0; z-index: 9999; }
   .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #999; font-size: 0.75rem; border: none; background: none; }
@@ -164,6 +169,30 @@
       2. <strong>電梯攻略：</strong> 轉乘時不要急，抬頭找「エレベーター (Elevator)」黃色指標，繞路也沒關係。<br>
       3. <strong>行李寄送：</strong> 第一天若不想拉行李轉車，可在羽田機場找「JAL ABC」櫃檯寄到飯店 (通常隔天到，需準備一天換洗衣物)。<br>
     </div>
+
+      <div class="card" style="border:2px solid #1E88E5; background:#E3F2FD;">
+        <div class="c-title" style="color:#1976D2;">💰 旅遊記帳本 (日圓 ¥)</div>
+        <div id="accounting-input">
+            <label>金額 (Amount)</label>
+            <input type="number" id="expense-amount" placeholder="e.g., 2500" required>
+            <label>項目/內容 (Description)</label>
+            <input type="text" id="expense-description" placeholder="請輸入項目，如：午餐/玩具/車票" required>
+            <label>日期 (Day)</label>
+            <select id="expense-day">
+                <option value="3/31">3/31 (二)</option>
+                <option value="4/1">4/1 (三) 迪士尼</option>
+                <option value="4/2">4/2 (四)</option>
+                <option value="4/3">4/3 (五)</option>
+                <option value="4/4">4/4 (六)</option>
+            </select>
+            <button onclick="saveExpense()" class="map-btn" style="background:#1E88E5; margin-top:5px;">➕ 記錄花費</button>
+        </div>
+        
+        <div style="margin-top:20px;">
+            <h4 style="margin: 10px 0;">總結花費明細</h4>
+            <div id="total-amount" style="font-size: 1.3rem; font-weight: bold; color: #D81B60;">總支出: ¥ 0</div>
+            <table id="summary-table" class="summary-table" style="width: 100%; margin-top: 10px;"></table>
+            <a onclick="clearData()" style="color: #EF5350; cursor:pointer; font-size: 0.9rem; display: block; margin-top: 10px;">⚠️ 清除所有記帳資料</a>
   </div>
 </div>
 

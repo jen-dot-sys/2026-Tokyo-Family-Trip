@@ -687,11 +687,24 @@
 
 <script>
 function sw(id, btn) {
+  // 檢查並關閉日文放大視窗
+  closeJp(); 
+  
+  // 處理頁面切換
   document.querySelectorAll('.container').forEach(e => e.classList.remove('active-page'));
   document.getElementById('page-' + id).classList.add('active-page');
+  
+  // 處理導覽列 active 狀態
   document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  window.scrollTo(0,0);
+  
+  // 滾動到頂部
+  window.scrollTo(0, 0);
+
+  // 如果是 Info 頁面，重新載入記帳總結
+  if (id === 'info') {
+      renderSummary();
+  }
 }
 
 function showJp(text) {
@@ -702,6 +715,7 @@ function closeJp() {
   document.getElementById('jp-modal').style.display = 'none';
 }
 
+// === 記帳功能核心邏輯 ===
 function saveExpense() {
     const amount = document.getElementById('expense-amount').value;
     const description = document.getElementById('expense-description').value;
@@ -775,7 +789,7 @@ function clearData() {
         renderSummary();
     }
 }
-
+// === 天氣功能 (維持) ===
 async function getWeather() {
   const box = document.getElementById('weather-container');
   try {
@@ -790,7 +804,12 @@ async function getWeather() {
       const max = Math.round(data.daily.temperature_2m_max[i]);
       const rain = data.daily.precipitation_probability_max[i];
       let icon = code === 0 ? "☀️" : (code <= 3 ? "☁️" : (code <= 60 ? "🌧️" : "⛈️"));
-      html += `<div class="w-card"><div class="w-day">${day}</div><div class="w-icon">${icon}</div><div class="w-temp">${min}-${max}°</div><div class="w-rain">☔${rain}%</div></div>`;
+      html += `<div class="w-card" style="color: #333;">
+                <div class="w-day">${day}</div>
+                <div class="w-icon">${icon}</div>
+                <div class="w-temp">${min}-${max}°</div>
+                <div class="w-rain" style="color:#444; background: rgba(0,0,0,0.1);">☔${rain}%</div>
+              </div>`;
     }
     box.innerHTML = html;
   } catch(e) { box.innerHTML = "天氣載入失敗"; }

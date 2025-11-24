@@ -10,11 +10,11 @@
   :root { --p: #D1C4E9; --pd: #7E57C2; --bg: #F3E5F5; --card: #fff; --text: #444; --btn: #448AFF; }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 120px; }
-  
+
   /* Header */
   .header { background: linear-gradient(135deg, #B39DDB, #90CAF9); color: white; padding: 20px; border-radius: 0 0 25px 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
   .title { font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; }
-  
+
   /* Weather */
   .weather-scroll { display: flex; gap: 10px; overflow-x: auto; padding: 10px 0; }
   .w-card { background: rgba(255,255,255,0.25); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.4); border-radius: 12px; padding: 8px; min-width: 75px; text-align: center; flex-shrink: 0; color: white; }
@@ -24,13 +24,13 @@
   .container { padding: 15px; display: none; animation: fadeIn 0.3s; }
   .active-page { display: block; }
   @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-  
+
   /* Cards */
   .card { background: var(--card); border-radius: 16px; padding: 18px; margin-bottom: 15px; box-shadow: 0 3px 8px rgba(0,0,0,0.05); border: 1px solid #fff; }
   .card-head { display: flex; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; }
   .time { background: var(--p); color: #fff; font-size: 0.85rem; padding: 4px 10px; border-radius: 12px; margin-right: 10px; font-weight: bold; flex-shrink: 0; }
   .c-title { font-weight: bold; font-size: 1.1rem; color: #444; }
-  
+
   /* Info Blocks */
   .info { background: #FAFAFA; padding: 12px; border-radius: 10px; font-size: 0.95rem; line-height: 1.7; margin-top: 10px; border-left: 5px solid #ccc; }
   .info.tr { border-left-color: #448AFF; background: #E3F2FD; }
@@ -60,11 +60,11 @@
   .jp-list-item { border-bottom: 1px solid #eee; padding: 12px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
   .jp-list-item:active { background: #f5f5f5; }
   .jp-q { font-size: 0.9rem; color: #333; } .jp-hint { font-size: 0.7rem; color: #999; background: #eee; padding: 2px 6px; border-radius: 4px; }
-  
+
   #jp-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; flex-direction: column; padding: 20px; text-align: center; }
   #jp-text { color: #fff; font-size: 2rem; font-weight: bold; line-height: 1.5; }
   #jp-close { margin-top: 40px; padding: 10px 30px; background: white; border-radius: 30px; font-weight: bold; color: #333; }
-  
+
   details { margin-top: 10px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff; }
   summary { font-weight: bold; color: var(--pd); cursor: pointer; outline: none; }
 
@@ -98,7 +98,7 @@
              <div class="w-card">載入中...</div>
         </div>
     </div>
-    
+
     <div class="card" style="border:2px solid #5C6BC0; background:#E8EAF6;">
         <div class="c-title" style="color:#3F51B5;">✈️ 航班與住宿資訊</div>
         <div class="info tr">
@@ -122,7 +122,7 @@
 
     <div class="card" style="border: 2px solid #FBC02D;">
     <div class="c-title" style="color:#F57F17;">🗣️ 手指日文 (點擊放大)</div>
-    
+
     <details><summary>🍽️ 餐廳需求 (勿辣/芥末/去冰)</summary>
       <div class="jp-list-item" onclick="showJp('子供用の椅子はありますか？')"><span class="jp-q">有兒童椅嗎？</span><span class="jp-hint">放大</span></div>
       <div class="jp-list-item" onclick="showJp('子供用の食器をください')"><span class="jp-q">請給我兒童餐具</span><span class="jp-hint">放大</span></div>
@@ -150,13 +150,13 @@
       <div class="jp-list-item" onclick="showJp('これは在庫がありますか？')"><span class="jp-q">這個還有庫存嗎？</span><span class="jp-hint">放大</span></div>
     </details>
   </div>
-  
+
     <div class="card" style="border:2px solid #EF5350;">
         <div class="c-title" style="color:#C62828;">🚑 緊急應變</div>
         <div class="info wn">
             1. <strong>救護車/火警：</strong> 119。<br>
             2. <strong>小孩發燒：</strong> 藥局買「退熱貼 (冷却シート)」或「Bufferin (兒童止痛藥)」。<br>
-            3. <strong>最近醫院：</strong> 昭和大学江東豊洲病院 (離飯店/豐洲近)。
+            3. <strong>最近醫院：：</strong> 昭和大学江東豊洲病院 (離飯店/豐洲近)。
         </div>
         <a href="https://www.google.com/maps/search/?api=1&query=昭和大学江東豊洲病院" class="map-btn sm" style="background:#EF5350" target="_blank">📍 導航醫院</a>
         <a href="https://www.google.com/maps/search/?api=1&query=drugstore+near+me" class="map-btn sm" style="background:#EF5350" target="_blank">📍 搜尋附近藥局</a>
@@ -188,15 +188,15 @@
             </select>
             <button onclick="saveExpense()" class="map-btn" style="background:#1E88E5; margin-top:5px;">➕ 記錄花費</button>
         </div>
-        
+
         <div style="margin-top:20px;">
             <h4 style="margin: 10px 0;">總結花費明細</h4>
             <div id="total-amount" style="font-size: 1.3rem; font-weight: bold; color: #D81B60;">總支出: ¥ 0</div>
             <table id="summary-table" class="summary-table" style="width: 100%; margin-top: 10px;"></table>
             <a onclick="clearData()" style="color: #EF5350; cursor:pointer; font-size: 0.9rem; display: block; margin-top: 10px;">⚠️ 清除所有記帳資料</a>
-  </div>
+        </div>
+      </div>
 </div>
-
 <div id="page-prep" class="container">
   <div class="card" style="border:2px solid #F06292; background:#FCE4EC;">
     <div class="c-title" style="color:#C2185B;">🌸 門票預約 (出發前)</div>
@@ -236,8 +236,8 @@
     <div class="check-row"><label><input type="checkbox"> 盥洗用品(寶寶沐浴乳、小牙刷)</label></div>
   </div>
 </div>
-  
-  <div id="page-d1" class="container">
+
+<div id="page-d1" class="container">
   <div class="card daily-bag">
     <div class="c-title">🎒 今日隨身包- 飯店 Check-in ➔ 【二選一】 LaLaport 豐洲 (室內購物) 或 錦糸公園 (櫻花/溜滑梯)</div>
     <div class="check-row"><label><input type="checkbox"> 護照 & 錢包</label></div>
@@ -281,10 +281,10 @@
       <strong>🍽️ 晚餐三備案 (商場內)：</strong><br>
       <span class="tag">A 享受</span> <strong>築地玉壽司 (4F)</strong>：道地握壽司，有熟食。<br>
       <a href="https://www.google.com/maps/search/?api=1&query=Tsukiji+Tama+Sushi+Lalaport+Toyosu" class="map-btn sm" target="_blank">📍導航玉壽司</a><br><br>
-      
+
       <span class="tag b">B 安全</span> <strong>100 Spoons (3F)</strong>：親子餐廳，有免費寶寶粥。<br>
       <a href="https://www.google.com/maps/search/?api=1&query=100+Spoons+Toyosu" class="map-btn sm" target="_blank">📍導航100 Spoons</a><br><br>
-      
+
       <span class="tag c">C 快速</span> <strong>Grandbuffet (3F)</strong>：自助餐，選擇多。<br>
       <a href="https://www.google.com/maps/search/?api=1&query=Grandbuffet+LaLaport+Toyosu" class="map-btn sm" target="_blank">📍導航自助餐</a>
     </div>
@@ -309,10 +309,10 @@
       <strong>🍽️ 晚餐三備案 (Arcakit內)：</strong><br>
       <span class="tag">A 享受</span> <strong>不二家餐廳 (10F)</strong>：有Peko醬，親子友善。<br>
       <a href="https://www.google.com/maps/search/?api=1&query=Fujiya+Restaurant+Arcakit" class="map-btn sm" target="_blank">📍導航不二家</a><br><br>
-      
+
       <span class="tag b">B 安全</span> <strong>壽司三崎港 (10F)</strong>：迴轉壽司，簡單好吃。<br>
       <a href="https://www.google.com/maps/search/?api=1&query=Kaitenzushi+Misakimaru+Arcakit" class="map-btn sm" target="_blank">📍導航壽司</a><br><br>
-      
+
       <span class="tag c">C 快速</span> <strong>Shake Shack (Parco)</strong>：漢堡，過馬路就到。<br>
       <a href="https://www.google.com/maps/search/?api=1&query=Shake+Shack+Kinshicho" class="map-btn sm" target="_blank">📍導航漢堡</a>
     </div>
@@ -438,8 +438,8 @@
     <a href="https://www.google.com/maps/search/?api=1&query=Westernland+Tokyo+Disneyland" class="map-btn sm" target="_blank">📍 導航西部樂園</a>
   </div>
 </div>
-  
-  <div id="page-d3" class="container">
+
+<div id="page-d3" class="container">
   <div class="card daily-bag">
     <div class="c-title">🎒 今日隨身包- 葛西臨海公園 (水族館/小火車/賞櫻) ➔ 搭公車去 Sunny Mall (Birthday 購物)</div>
     <div class="check-row"><label><input type="checkbox"> <strong>推車雨罩</strong> (看氣象)</label></div>
@@ -662,7 +662,7 @@
       <span class="tag b">B</span> <strong>矢場味噌豬排</strong> (重口味下飯)<br>
       <span class="tag c">C</span> <strong>美食街</strong> (選擇多)<br>
     </div>
-    <div class="info shop"><strong>伴手禮：</strong> NY起司餅、Tokyo Banana。</div>
+    <div class="info shop"><strong>伴手禮：：</strong> NY起司餅、Tokyo Banana。</div>
     <a href="https://www.google.com/maps/search/?api=1&query=Haneda+Airport+Garden" class="map-btn" target="_blank">📍 導航機場花園</a>
   </div>
 </div>
@@ -688,7 +688,15 @@
 <script>
 function sw(id, btn) {
   document.querySelectorAll('.container').forEach(e => e.classList.remove('active-page'));
-  document.getElementById('page-' + id).classList.add('active-page');
+  // 檢查元素是否存在，避免報錯
+  const targetElement = document.getElementById('page-' + id);
+  if (targetElement) {
+    targetElement.classList.add('active-page');
+  } else {
+    console.error(`Error: Element with ID 'page-${id}' not found.`);
+    return; // 找不到元素就停止執行
+  }
+
   document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   window.scrollTo(0,0);
@@ -796,6 +804,7 @@ async function getWeather() {
   } catch(e) { box.innerHTML = "天氣載入失敗"; }
 }
 window.onload = function() {
+  // 啟動時選擇第一個導航按鈕 ('資訊') 來初始化頁面
   sw('info', document.querySelector('.nav-item')); 
   getWeather();
   renderSummary(); // 初始載入記帳數據

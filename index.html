@@ -193,11 +193,11 @@
             <input type="text" id="expense-description" placeholder="請輸入項目，如：午餐/玩具/車票" required>
             <label>日期 (Day)</label>
             <select id="expense-day">
-                <option value="3/31">3/31 (二)</option>
-                <option value="4/1">4/1 (三) 迪士尼</option>
-                <option value="4/2">4/2 (四)</option>
-                <option value="4/3">4/3 (五)</option>
-                <option value="4/4">4/4 (六)</option>
+                <option value="D1-3/31">3/31 (二) Lalapor/賞櫻</option>
+                <option value="D2-4/1">4/1 (三) 迪士尼</option>
+                <option value="D3-4/2">4/2 (四) 賞櫻+水族館</option>
+                <option value="D4-4/3">4/3 (五) 賞櫻+美術館</option>
+                <option value="D5-4/4">4/4 (六) 返家</option>
             </select>
             <button onclick="saveExpense()" class="map-btn" style="background:#1E88E5; margin-top:5px;">➕ 記錄花費</button>
         </div>
@@ -706,14 +706,14 @@
     <div class="nav-icon">📋</div><div style="font-size:0.65rem;">準備</div>
   </button>
   <button class="nav-item" onclick="sw('d1',this)">
-    <div class="nav-icon">✈️</div><div style="font-size:0.65rem;">3/31(二)</div>
+    <div class="nav-icon">✈️</div><div style="font-size:0.65rem;">D1-3/31(二)</div>
   </button>
   <button class="nav-item" onclick="sw('d2',this)">
-    <div class="nav-icon">🏰</div><div style="font-size:0.65rem;">4/1(三)</div>
+    <div class="nav-icon">🏰</div><div style="font-size:0.65rem;">D2-4/1(三)</div>
   </button>
-  <button class="nav-item" onclick="sw('d3',this)"><div class="nav-icon">🌸</div><div style="font-size:0.65rem;">4/2(四)</div></button>
-  <button class="nav-item" onclick="sw('d4',this)"><div class="nav-icon">🧸</div><div style="font-size:0.65rem;">4/3(五)</div></button>
-  <button class="nav-item" onclick="sw('d5',this)"><div class="nav-icon">🏠</div><div style="font-size:0.65rem;">4/4(六)</div></button>
+  <button class="nav-item" onclick="sw('d3',this)"><div class="nav-icon">🌸</div><div style="font-size:0.65rem;">D3-4/2(四)</div></button>
+  <button class="nav-item" onclick="sw('d4',this)"><div class="nav-icon">🧸</div><div style="font-size:0.65rem;">D4-4/3(五)</div></button>
+  <button class="nav-item" onclick="sw('d5',this)"><div class="nav-icon">🏠</div><div style="font-size:0.65rem;">D5-4/4(六)</div></button>
 </div>
 
 <script>
